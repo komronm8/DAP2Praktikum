@@ -1,5 +1,3 @@
-package Blatt07;
-
 public class AufgabeB7A1{
 
     
