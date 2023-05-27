@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Scanner;
 
@@ -17,15 +18,21 @@ public class AufgabeB7A2 {
             return;
         }
 
-        AufgabeB7A2 aufgabe = new AufgabeB7A2();
+
         int[] values;
         int[] weights;
+        int[] check;
 
         try {
             Scanner scanner = new Scanner(System.in);
-            values = aufgabe.getInput(scanner);
-            weights = aufgabe.getInput(scanner);
+            values = getInput(scanner);
+            weights = getInput(scanner);
 
+            if(scanner.hasNextLine()){
+                System.out.println("Input did not end after second list.");
+                return;
+            }
+            
             if (values.length != weights.length) {
                 System.err.println("The number of values does not match the number of weights.");
                 return;
@@ -35,12 +42,12 @@ public class AufgabeB7A2 {
             return;
         }
 
-        int[][] table = aufgabe.knapsack(values, weights, capacity);
+        int[][] table = knapsack(values, weights, capacity);
         int optimalValue = table[values.length][capacity];
         System.out.println(optimalValue);
     }
 
-    public int[] getInput(Scanner scanner) throws NumberFormatException {
+    public static int[] getInput(Scanner scanner) throws NumberFormatException {
         List<Integer> inputList = new ArrayList<>();
         while (scanner.hasNextLine()) {
             String line = scanner.nextLine();
@@ -59,7 +66,7 @@ public class AufgabeB7A2 {
         return inputArray;
     }
 
-    public int[][] knapsack(int[] values, int[] weights, int capacity) {
+    public static int[][] knapsack(int[] values, int[] weights, int capacity) {
         int n = values.length;
         int[][] table = new int[n + 1][capacity + 1];
 
