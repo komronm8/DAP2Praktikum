@@ -1,16 +1,17 @@
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 import java.util.Scanner;
 
 public class AufgabeB7A2 {
     public static void main(String[] args) {
+        //Check if argument is given
         if (args.length < 1) {
             System.err.println("Rucksackkapazität fehlt.");
             return;
         }
 
         int capacity;
+        //Get capacity from argument
         try {
             capacity = Integer.parseInt(args[0]);
         } catch (NumberFormatException e) {
@@ -21,8 +22,9 @@ public class AufgabeB7A2 {
 
         int[] values;
         int[] weights;
-        int[] check;
 
+        //Get input list from Standard In
+        //Only two input lists are allowed to be given
         try {
             Scanner scanner = new Scanner(System.in);
             values = getInput(scanner);
@@ -47,6 +49,7 @@ public class AufgabeB7A2 {
         System.out.println(optimalValue);
     }
 
+    //Method that reads from the terminal(Standard input)
     public static int[] getInput(Scanner scanner) throws NumberFormatException {
         List<Integer> inputList = new ArrayList<>();
         while (scanner.hasNextLine()) {
@@ -66,6 +69,7 @@ public class AufgabeB7A2 {
         return inputArray;
     }
 
+    //Returns a 2D table with the optimal values for diffrent items and capacities
     public static int[][] knapsack(int[] values, int[] weights, int capacity) {
         int n = values.length;
         int[][] table = new int[n + 1][capacity + 1];

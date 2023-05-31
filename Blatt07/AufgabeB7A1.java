@@ -1,12 +1,14 @@
 public class AufgabeB7A1{
 
-    
+    //Main method of the class
     public static void main(String[] args) {
+        //Check if argument length is give
         if (args.length == 0) {
             System.out.println("Please provide a number as an argument.");
             return;
         }
 
+        //Try to get argument and check if it is a valid number
         try {
             int n = Integer.parseInt(args[0]);
             if (n < 0) {
@@ -21,6 +23,7 @@ public class AufgabeB7A1{
         }
     }
 
+    //Method that uses dynamic programming for finding the fibonacci number of n 
     public static int fibDyn(int n) {
         if (n <= 1) {
             return n;
