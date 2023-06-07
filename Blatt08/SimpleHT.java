@@ -5,7 +5,7 @@ public class SimpleHT {
     public int size;
     public ArrayList<ArrayList<Pair>> data;
 
-
+    //Constuctor method for the class
     public SimpleHT(int capacity){
         this.size = capacity;
         data = new ArrayList<ArrayList<Pair>>(capacity);
@@ -15,15 +15,17 @@ public class SimpleHT {
         }
     }
 
+    //Method that returns the mod of the integer key
     public int addressOf(Integer key){
         return Math.floorMod(key, size);
     }
 
+    //Inserts the pair with the key and its value into the hashtable
+    //If a pair with same key is in the hashtable the value will be overwritten with the new value
     public void insert(Integer key, Integer value) {
         Pair newPair = new Pair(key, value);
         int hashIndex = addressOf(key);
         ArrayList<Pair> list = data.get(hashIndex);
-
 
         if( list == null ){
             list = new ArrayList<Pair>();
@@ -41,6 +43,7 @@ public class SimpleHT {
         }
     }
 
+    //Returns the value of the key, if the hashtable does not contain the key then null will be returned
     public Integer get(Integer key) {
         int hashIndex = addressOf(key);
         ArrayList<Pair> list = data.get(hashIndex);
@@ -55,6 +58,8 @@ public class SimpleHT {
         return null;
     }
 
+    //removes the pair from the hashtable with the same key. If the removal is succsesful then true will be 
+    //returned otherwise false
     public boolean remove(Integer key) {
         int hashIndex = addressOf(key);
         boolean flag = false;
@@ -71,6 +76,7 @@ public class SimpleHT {
         return flag;
     }
 
+    //Inner class pair
     public class Pair{
         Integer key;
         Integer value;
